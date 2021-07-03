@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+* {
+    transition: all 0.4s ease;
+}
+
+.spacing-1 {
+    letter-spacing: 1rem;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+.h-40vh {
+    height: 40vh;
+}
+
+.text-13 {
+    font-size: 13px !important;
+}
+
+.text-18 {
+    font-size: 18px !important;
+}
+
+.checkbox {
+    display: block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 2px solid hsl(236, 33%, 92%);
+    cursor: pointer;
+}
+
+.checkbox:hover {
+    border: 2px solid #3a7bfd !important;
+}
+
+.checked {
+    position: relative;
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+.checked::after {
+    position: absolute;
+    content: '';
+    width: 6px;
+    height: 12px;
+    border-right: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(45deg);
+}
+
+.todoItem {
+    border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+
+.lightGray {
+    color: hsl(236, 9%, 61%);
+}
+
+.active {
+    color: hsl(220, 98%, 61%) !important;
+}
