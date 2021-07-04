@@ -71,3 +71,11 @@ input:focus-visible {
 .active {
     color: hsl(220, 98%, 61%) !important;
 }
+
+.hide {
+    display: none;
+}
+
+.todoItem:hover .hide {
+    display: flex;
+}

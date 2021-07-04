@@ -1,6 +1,8 @@
 import React from 'react'
 import bg_dark_img from './assets/images/bg-desktop-dark.jpg'
 import bg_light_img from './assets/images/bg-desktop-light.jpg'
+import bg_dark_mobile from './assets/images/bg-mobile-dark.jpg'
+import bg_light_mobile from './assets/images/bg-mobile-light.jpg'
 import sunIcon from './assets/images/icon-sun.svg'
 import moonIcon from './assets/images/icon-moon.svg'
 import CheckBox from './CheckBox'
@@ -32,6 +34,19 @@ function App() {
     useEffect(() => {
         toggleMode()
     }, [darkMode])
+
+    useEffect(() => {
+        let element = document.getElementById('todos')
+        let mainDiv = document.getElementById('mainDiv')
+
+        if (element && mainDiv) {
+            if (window.innerHeight <= element?.scrollHeight) {
+                mainDiv.style.height = `${element.scrollHeight}px`
+            } else {
+                mainDiv.style.height = '100vh'
+            }
+        }
+    }, [todoList])
 
     const onCheckBoxClick = () => {
         setCurrentItem((prevState) => ({
@@ -74,14 +89,34 @@ function App() {
         )
     }
 
+    const removeTodo = (idx: Number) => {
+        setTodoList((prevState) =>
+            prevState.filter((item, index) => index !== idx)
+        )
+    }
+
     return (
-        <div className="bg-white relative w-full min-h-screen dark:bg-darkBlue">
+        <div
+            id="mainDiv"
+            className="bg-white relative w-full min-h-screen dark:bg-darkBlue"
+        >
             <img
-                src={!darkMode ? bg_light_img : bg_dark_img}
+                src={
+                    !darkMode
+                        ? windowWidth < 500
+                            ? bg_light_mobile
+                            : bg_light_img
+                        : windowWidth < 500
+                        ? bg_dark_mobile
+                        : bg_dark_img
+                }
                 alt="background"
                 className="w-full object-cover h-40vh"
             />
-            <div className="absolute lg:w-2/5 md:w-3/5 sm:w-4/5 w-11/12 inset-x-0 top-0 m-auto">
+            <div
+                id="todos"
+                className="absolute lg:w-2/5 md:w-3/5 sm:w-4/5 w-11/12 inset-x-0 top-0 m-auto"
+            >
                 <div className="flex justify-between items-start mt-20 mb-8">
                     <p className="text-4xl text-white font-semibold spacing-1">
                         TODO
@@ -121,6 +156,7 @@ function App() {
                     markAsCompleted={markAsCompleted}
                     clearCompletedTodos={clearCompletedTodos}
                     windowWidth={windowWidth}
+                    removeTodo={removeTodo}
                 />
             </div>
         </div>

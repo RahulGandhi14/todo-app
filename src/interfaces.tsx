@@ -9,6 +9,7 @@ export interface todoList {
     markAsCompleted: (idx: Number) => void
     clearCompletedTodos: () => void
     windowWidth: Number
+    removeTodo: (idx: Number) => void
 }
 
 export interface CheckBoxProps {
