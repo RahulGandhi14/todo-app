@@ -10,6 +10,7 @@ export interface todoList {
     clearCompletedTodos: () => void
     windowWidth: Number
     removeTodo: (idx: Number) => void
+    handleOnDragEnd: (result: any) => void
 }
 
 export interface CheckBoxProps {

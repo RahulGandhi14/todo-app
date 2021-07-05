@@ -58,6 +58,7 @@ function App() {
     const onEnter = (e) => {
         if (e.charCode === 13) {
             if (!currentItem.todo) return
+            if (windowWidth < 500) document.getElementById('enterTodo')?.blur()
             let id = nanoid(5)
             setTodoList((prevState) => [...prevState, { ...currentItem, id }])
             setCurrentItem({
@@ -95,6 +96,16 @@ function App() {
         )
     }
 
+    const handleOnDragEnd = (result: any) => {
+        if (!result.destination) return
+        setTodoList((prevState) => {
+            let newState = [...prevState]
+            const [reOrderedItem] = newState.splice(result.source.index, 1)
+            newState.splice(result.destination.index, 0, reOrderedItem)
+            return newState
+        })
+    }
+
     return (
         <div
             id="mainDiv"
@@ -117,7 +128,7 @@ function App() {
                 id="todos"
                 className="absolute lg:w-2/5 md:w-3/5 sm:w-4/5 w-11/12 inset-x-0 top-0 m-auto"
             >
-                <div className="flex justify-between items-start mt-20 mb-8">
+                <div className="flex justify-between items-start mt-14 sm:mt-20 mb-8">
                     <p className="text-4xl text-white font-semibold spacing-1">
                         TODO
                     </p>
@@ -157,6 +168,7 @@ function App() {
                     clearCompletedTodos={clearCompletedTodos}
                     windowWidth={windowWidth}
                     removeTodo={removeTodo}
+                    handleOnDragEnd={handleOnDragEnd}
                 />
             </div>
         </div>
