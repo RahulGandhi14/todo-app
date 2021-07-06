@@ -171,6 +171,17 @@ function App() {
                     handleOnDragEnd={handleOnDragEnd}
                 />
             </div>
+            <div className="absolute bottom-0 w-full text-center attribution bg-white dark:bg-darkBlue dark:text-lightGrayishBlue dark:bg-opacity-50">
+                Challenge by
+                <a href="https://www.frontendmentor.io?ref=challenge">
+                    &nbsp;Frontend Mentor
+                </a>
+                . Coded by
+                <a href="https://www.linkedin.com/in/rahulgandhi14/">
+                    &nbsp;Rahul Gandhi
+                </a>
+                .
+            </div>
         </div>
     )
 }
