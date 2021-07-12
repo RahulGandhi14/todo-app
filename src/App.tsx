@@ -60,7 +60,7 @@ function App() {
             if (!currentItem.todo) return
             if (windowWidth < 500) document.getElementById('enterTodo')?.blur()
             let id = nanoid(5)
-            setTodoList((prevState) => [...prevState, { ...currentItem, id }])
+            setTodoList((prevState) => [{ ...currentItem, id }, ...prevState])
             setCurrentItem({
                 ...currentItem,
                 id: '',

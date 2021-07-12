@@ -7,7 +7,9 @@ body {
 }
 
 * {
-    transition: all 0.4s ease;
+    transition: border 0.4s ease, color 0.4s ease, width 0.4s ease,
+        height 0.4s ease, font-size 0.4s ease, background 0.4s ease,
+        background-color 0.4s ease, opacity 0.4s ease;
 }
 
 .spacing-1 {

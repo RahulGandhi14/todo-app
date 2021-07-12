@@ -98,7 +98,7 @@ const TodoItems: FC<todoList> = ({
                                                                 <p
                                                                     className={`w-full py-4 pl-14 pr-14 text-18 cursor-move whitespace-nowrap overflow-ellipsis overflow-hidden text-darkGrayishBlue dark:text-grayishBlue ${
                                                                         todoItem.isCompleted &&
-                                                                        'line-through text-opacity-50 dark:text-opacity-80'
+                                                                        'line-through text-opacity-50 dark:text-opacity-40'
                                                                     }`}
                                                                     title={String(
                                                                         todoItem.todo ||
